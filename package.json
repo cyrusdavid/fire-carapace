@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "gulp": "~2.6.0",
+    "gulp-dot": "~0.2.2",
+    "rimraf": "~2.2.4",
+    "gulp-less": "0.0.3",
+    "tiny-lr": "0.0.5",
+    "gulp-livereload": "~0.1.0"
+  },
+  "dir": {
+    "source": "src",
+    "dest": "build"
+  }
+}

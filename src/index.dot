@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  {{#def.navbar}}
+  <div class="container">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, quam, optio, aperiam quia suscipit consequatur pariatur veniam repellendus non neque perspiciatis nam facilis repudiandae!</p>
+  </div>
+</body>
+</html>
