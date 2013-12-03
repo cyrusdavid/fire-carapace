@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  {{#def.navbar}}
+{{##def.title = 'Hello World'#}}
+{{#def.head}}
   <div class="container">
+    <header class="page-header">
+      <h1>{{#def.title}}</h1>
+    </header>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, quam, optio, aperiam quia suscipit consequatur pariatur veniam repellendus non neque perspiciatis nam facilis repudiandae!</p>
   </div>
-</body>
-</html>
+{{#def.foot}}
