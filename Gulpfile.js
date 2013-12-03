@@ -16,7 +16,8 @@ g.task('less:dev', function () {
 
 g.task('copy:assets', function () {
   g.src(pkg.dir.source + '/{img,font,js}')
-    .pipe(g.dest(pkg.dir.dest));
+    .pipe(g.dest(pkg.dir.dest))
+    .pipe(refresh(server));
 });
 
 g.task('copy:vendorScripts', function () {
