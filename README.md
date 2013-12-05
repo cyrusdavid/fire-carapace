@@ -1,8 +1,8 @@
-Gulp LESS + doT.js boilerplate
+Gulp SASS + doT.js boilerplate
 ===
 
 - extremely fast template compilation
-- less
+- SASS
 - livereload
 
 Roadmap :smirk:
