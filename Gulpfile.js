@@ -20,8 +20,14 @@ g.task('sass:dev', function () {
 });
 
 g.task('copy:assets', function () {
-  g.src(pkg.dir.source + '/{img,font,js}')
-    .pipe(g.dest(pkg.dir.dest))
+  g.src(pkg.dir.source + '/js/**')
+    .pipe(g.dest(pkg.dir.dest + '/js'))
+    .pipe(refresh(server));
+  g.src(pkg.dir.source + '/img/**')
+    .pipe(g.dest(pkg.dir.dest + '/img'))
+    .pipe(refresh(server));
+  g.src(pkg.dir.source + '/font/**')
+    .pipe(g.dest(pkg.dir.dest + '/font'))
     .pipe(refresh(server));
 });
 
