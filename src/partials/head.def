@@ -3,5 +3,6 @@
 <head>
   <title>{{#def.title}}</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/vendor/modernizr.js"></script>
 </head>
 <body>

@@ -1,15 +1,20 @@
 var g = require('gulp'),
     dot = require('gulp-dot'),
-    less = require('gulp-less'),
+    sass = require('gulp-sass'),
     rm = require('rimraf'),
     lr = require('tiny-lr'),
     pkg = require('./package'),
     refresh = require('gulp-livereload'),
     server = lr();
 
-g.task('less:dev', function () {
-  g.src(pkg.dir.source + '/less/style.less')
-    .pipe(less())
+g.task('sass:dev', function () {
+  var settings = {
+    includePath: __dirname,
+    outputStyle: 'expanded'
+  };
+
+  g.src(pkg.dir.source + '/sass/style.scss')
+    .pipe(sass(settings))
     .pipe(g.dest(pkg.dir.dest + '/css'))
     .pipe(refresh(server));
 });
@@ -23,7 +28,8 @@ g.task('copy:assets', function () {
 g.task('copy:vendorScripts', function () {
   [
     'vendor/jquery/jquery.min.js',
-    'vendor/bootstrap/dist/js/bootstrap.min.js'
+    'vendor/foundation/js/foundation.min.js',
+    'vendor/modernizr/modernizr.js'
   ].forEach(function (file) {
     g.src(file).pipe(g.dest(pkg.dir.dest+'/js/vendor'));
   });
@@ -47,7 +53,7 @@ g.task('clean:dest', function () {
 g.task('default', [
     'clean:dest',
     'dot',
-    'less:dev',
+    'sass:dev',
     'copy:assets',
     'copy:vendorScripts'
   ], function () {
@@ -57,8 +63,8 @@ g.task('default', [
       g.watch(pkg.dir.source + '/{img,font,js}/**/*', function () {
         g.run('copy:assets');
       });
-      g.watch(pkg.dir.source + '/less/**/*.less', function () {
-        g.run('less:dev');
+      g.watch(pkg.dir.source + '/sass/**/*.scss', function () {
+        g.run('sass:dev');
       });
       g.watch(pkg.dir.source + '/**/*.{dot,def}', function () {
         g.run('dot');
