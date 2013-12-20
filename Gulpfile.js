@@ -1,4 +1,5 @@
 var g = require('gulp'),
+    gutil = require('gulp-util'),
     dot = require('gulp-dot'),
     less = require('gulp-less'),
     rm = require('rimraf'),
@@ -7,26 +8,44 @@ var g = require('gulp'),
     refresh = require('gulp-livereload'),
     server = lr();
 
-g.task('less:dev', function () {
+process.on('uncaughtException', function(err) {
+  gutil.log('Caught exception: ' + err);
+});
+
+g.task('less', function () {
   g.src(pkg.dir.source + '/less/style.less')
     .pipe(less())
     .pipe(g.dest(pkg.dir.dest + '/css'))
     .pipe(refresh(server));
 });
 
-g.task('copy:assets', function () {
-  g.src(pkg.dir.source + '/{img,font,js}')
-    .pipe(g.dest(pkg.dir.dest))
+g.task('copy:js', function() {
+  g.src(pkg.dir.source + '/js/**')
+    .pipe(g.dest(pkg.dir.dest + '/js'))
     .pipe(refresh(server));
 });
 
+g.task('copy:img', function() {
+  g.src(pkg.dir.source + '/img/**')
+    .pipe(g.dest(pkg.dir.dest + '/img'))
+    .pipe(refresh(server));
+});
+
+g.task('copy:font', function() {
+  g.src(pkg.dir.source + '/font/**')
+    .pipe(g.dest(pkg.dir.dest + '/font'))
+    .pipe(refresh(server));
+});
+
+g.task('copy', ['copy:js', 'copy:img','copy:font', 'copy:vendorScripts'], function() {
+
+});
+
 g.task('copy:vendorScripts', function () {
-  [
+  g.src([
     'vendor/jquery/jquery.min.js',
     'vendor/bootstrap/dist/js/bootstrap.min.js'
-  ].forEach(function (file) {
-    g.src(file).pipe(g.dest(pkg.dir.dest+'/js/vendor'));
-  });
+  ]).pipe(g.dest(pkg.dir.dest+'/js/vendor'));
 });
 
 g.task('dot', function () {
@@ -40,25 +59,24 @@ g.task('dot', function () {
     .pipe(refresh(server));
 });
 
-g.task('clean:dest', function () {
+g.task('clean', function () {
   rm.sync(pkg.dir.dest);
 });
 
 g.task('default', [
-    'clean:dest',
+    'clean',
     'dot',
-    'less:dev',
-    'copy:assets',
-    'copy:vendorScripts'
+    'less',
+    'copy'
   ], function () {
     server.listen(35729, function (err) {
       if (err) return console.log(err);
 
-      g.watch(pkg.dir.source + '/{img,font,js}/**/*', function () {
-        g.run('copy:assets');
+      g.watch(pkg.dir.source + '/{img,font,js}/**/*.*', function () {
+        g.run('copy');
       });
       g.watch(pkg.dir.source + '/less/**/*.less', function () {
-        g.run('less:dev');
+        g.run('less');
       });
       g.watch(pkg.dir.source + '/**/*.{dot,def}', function () {
         g.run('dot');
