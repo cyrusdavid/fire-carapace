@@ -62,8 +62,8 @@ g.task('dot', function () {
     .pipe(refresh(server));
 });
 
-g.task('clean', function () {
-  rm.sync(pkg.dir.dest);
+g.task('clean', function (cb) {
+  rm(pkg.dir.dest + '/*', cb);
 });
 
 g.task('default', [
