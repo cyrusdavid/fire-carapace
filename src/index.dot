@@ -1,9 +1,7 @@
 {{##def.title = 'Hello World'#}}
 {{#def.head}}
   <div class="container">
-    <header class="page-header">
-      <h1>{{#def.title}}</h1>
-    </header>
+    <img src="img/dog.png" alt="">
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, quam, optio, aperiam quia suscipit consequatur pariatur veniam repellendus non neque perspiciatis nam facilis repudiandae!</p>
   </div>
 {{#def.foot}}

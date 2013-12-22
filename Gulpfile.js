@@ -6,6 +6,9 @@ var g = require('gulp'),
     lr = require('tiny-lr'),
     pkg = require('./package'),
     refresh = require('gulp-livereload'),
+    spawn = require('child_process').spawn,
+    path  = require('path'),
+    util = require('util'),
     server = lr();
 
 process.on('uncaughtException', function(err) {
@@ -69,6 +72,25 @@ g.task('default', [
     'less',
     'copy'
   ], function () {
+    var mongoose = spawn('mongoose', [
+      '-document_root',
+      path.join(__dirname, pkg.dir.dest),
+      '-listening_ports',
+      80
+    ]);
+
+    mongoose.stdout.on('data', function (data) {
+      util.log('mongoose stdout: ' + data);
+    });
+
+    mongoose.stderr.on('data', function (data) {
+      util.error('mongoose stderr: ' + data);
+    });
+
+    mongoose.on('close', function (code) {
+      util.log('mongoose child process exited with code ' + code);
+    });
+
     server.listen(35729, function (err) {
       if (err) return console.log(err);
 
