@@ -1,12 +1,12 @@
 {
   "dependencies": {
-    "gulp": "~3.1.4",
+    "gulp": "~3.4.0",
     "gulp-dot": "~1.0.0",
     "rimraf": "~2.2.5",
-    "gulp-less": "1.0.0",
-    "tiny-lr": "0.0.5",
-    "gulp-livereload": "~0.1.1",
-    "gulp-util": "~2.1.4"
+    "gulp-less": "~1.1.10",
+    "tiny-lr": "~0.0.5",
+    "gulp-livereload": "~0.2.0",
+    "gulp-util": "~2.2.12"
   },
   "dir": {
     "source": "src",
