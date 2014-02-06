@@ -39,6 +39,10 @@
   });
 
   gulp.task('dot:dev', ['clean'], function() {
+    gulp.src('app/layouts/*.dot', {read: false})
+      .pipe(watch())
+      .pipe(reload());
+
     return gulp.src('app/*.dot')
       .pipe(watch())
       .pipe(dot({layout: 'app/layouts/dev.dot'}))
