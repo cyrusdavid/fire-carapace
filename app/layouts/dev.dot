@@ -6,5 +6,7 @@
 </head>
 <body>
   {{#def.content}}
+  <script src="/js/first.js"></script>
+  <script src="/js/second.js"></script>
 </body>
 </html>

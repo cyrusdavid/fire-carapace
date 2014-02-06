@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{#def.title}}</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  {{#def.content}}
+  <script src="/js/app.js"></script>
+</body>
+</html>

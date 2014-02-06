@@ -28,14 +28,14 @@
   gulp.task('dot:dev', ['clean'], function() {
     return gulp.src('app/*.dot')
       .pipe(watch())
-      .pipe(dot({layout: 'app/layouts/default.dot'}))
+      .pipe(dot({layout: 'app/layouts/dev.dot'}))
       .pipe(gulp.dest('build'))
       .pipe(reload());
   });
 
   gulp.task('dot', ['clean'], function() {
     return gulp.src('app/*.dot')
-      .pipe(dot({layout: 'app/layouts/default.dot'}))
+      .pipe(dot({layout: 'app/layouts/prod.dot'}))
       .pipe(gulp.dest('build'));
   });
 
