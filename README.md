@@ -1,11 +1,9 @@
-Gulp LESS + doT.js boilerplate
+fire-carapace
 ===
 
-- extremely fast template compilation
-- less
+A ferociously quick front-end boilerplate using:
+
+- GULP
 - livereload
-- [mongoose](https://github.com/cesanta/mongoose) lightweight http server
-
-Roadmap :smirk:
-
-- doT.js template/layout file support
+- LESS/SASS
+- bootstrap

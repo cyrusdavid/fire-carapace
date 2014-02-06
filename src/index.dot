@@ -1,7 +1,0 @@
-{{##def.title = 'Hello World'#}}
-{{#def.head}}
-  <div class="container">
-    <img src="img/dog.png" alt="">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, quam, optio, aperiam quia suscipit consequatur pariatur veniam repellendus non neque perspiciatis nam facilis repudiandae!</p>
-  </div>
-{{#def.foot}}
