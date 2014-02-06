@@ -11,7 +11,18 @@
       imagemin = require('gulp-imagemin'),
       concat = require('gulp-concat'),
       uglify = require('gulp-uglify'),
-      watch = require('gulp-watch');
+      watch = require('gulp-watch'),
+      header = require('gulp-header'),
+      pkg = require('./package'),
+      banner;
+
+  banner = '/*!\n' +
+               ' * ' + pkg.name + ' - ' + pkg.description + '\n' +
+               ' * ' + pkg.url + '\n' +
+               ' * @author ' + pkg.author + '\n' +
+               ' * @version ' + pkg.version + '\n' +
+               ' * Copyright ' + pkg.copyright + '. ' + pkg.license + ' licensed.\n' +
+               ' */\n';
 
   gulp.task('serve', ['dot:dev', 'less:dev', 'img:dev', 'js:dev'], function(next) {
     var staticS = require('node-static');
@@ -50,6 +61,7 @@
   gulp.task('less', ['clean'], function() {
     return gulp.src('app/less/style.less')
       .pipe(less({compress:true}))
+      .pipe(header(banner))
       .pipe(gulp.dest('build/css'));
   });
 
@@ -77,6 +89,7 @@
     return gulp.src(['app/js/**'])
       .pipe(concat('app.js'))
       .pipe(uglify())
+      .pipe(header(banner))
       .pipe(gulp.dest('build/js'));
   });
 
@@ -91,6 +104,7 @@
   gulp.task('sass', ['clean'], function() {
     return gulp.src('app/sass/style.scss')
       .pipe(sass({outputStyle: 'compressed'}))
+      .pipe(header(banner))
       .pipe(gulp.dest('build/css'));
   });
 
