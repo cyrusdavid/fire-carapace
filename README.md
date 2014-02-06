@@ -8,6 +8,7 @@ A ferociously quick front-end boilerplate using:
 - LESS/SASS
 - bootstrap
 - dot.js
+- static file server
 
 ## Tasks:
 
@@ -16,11 +17,13 @@ A ferociously quick front-end boilerplate using:
 
 ## Get started
 
-```
+```shell
 git clone --depth 1 https://github.com/vohof/fire-carapace myapp && cd $_
 npm install && bower install
-gulp serve
 ```
+
+Install the [livereload extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en) and fire up `gulp serve` on the command line.
+
 
 ## Boilerplate structure
 
