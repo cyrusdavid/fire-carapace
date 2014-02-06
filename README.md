@@ -14,6 +14,16 @@ A ferociously quick front-end boilerplate using:
 - **serve** - when in development
 - **build** - build the whole stuff
 
+## Get started
+
+```
+git clone --depth 1 https://github.com/vohof/fire-carapace myapp && cd $_
+npm install && bower install
+gulp serve
+```
+
+## Boilerplate structure
+
 ```
 fire-carapace
 |   .bowerrc
@@ -27,10 +37,12 @@ fire-carapace
 |   |   index.dot
 |   |
 |   +---js
-|   |       app.js
+|   |       first.js
+|   |       second.js
 |   |
 |   +---layouts
-|   |       default.dot
+|   |       dev.dot
+|   |       prod.dot
 |   |
 |   \---less
 |           style.less
@@ -42,3 +54,4 @@ fire-carapace
 +---node_modules
 |
 \---build
+```
