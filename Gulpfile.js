@@ -24,7 +24,11 @@
                ' * Copyright ' + pkg.copyright + '. ' + pkg.license + ' licensed.\n' +
                ' */\n';
 
-  gulp.task('serve', ['dot:dev', 'less:dev', 'img:dev', 'js:dev'], function(next) {
+  gulp.task('serve', ['dot:dev', 'less:dev', 'img:dev', 'js:dev', 'static']);
+
+  gulp.task('build', ['dot', 'less', 'img', 'js']);
+
+  gulp.task('static', function(next) {
     var staticS = require('node-static');
     var server = new staticS.Server('./build');
     require('http').createServer(function (request, response) {
@@ -33,8 +37,6 @@
       }).resume();
     }).listen(8080, next);
   });
-
-  gulp.task('build', ['dot', 'less', 'img', 'js']);
 
   gulp.task('dot:dev', ['clean'], function() {
     return gulp.src('app/*.dot')
